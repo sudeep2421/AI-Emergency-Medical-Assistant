@@ -1,0 +1,95 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    margin: 0;
+    padding: 20px;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+/* panels */
+
+.left-panel {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-panel {
+    flex: 1;
+}
+
+/* cards */
+
+.card {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+/* buttons */
+
+button {
+    background: #ff4b2b;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #ff2e00;
+}
+
+.ambulance {
+    background: red;
+}
+
+/* chatbot */
+
+#chatlogs {
+    height: 250px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+input {
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+/* avatar */
+
+.bot-avatar {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.bot-avatar i {
+    font-size: 40px;
+    color: #2a5298;
+}

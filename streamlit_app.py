@@ -1,7 +1,11 @@
 import streamlit as st
-import requests
+import pickle
+import numpy as np
 
 st.title("🚑 AI Emergency Medical Assistant")
+
+# load model
+model = pickle.load(open("model.pkl","rb"))
 
 fever = st.checkbox("Fever")
 cough = st.checkbox("Cough")
@@ -11,16 +15,17 @@ vomiting = st.checkbox("Vomiting")
 
 if st.button("Predict Disease"):
 
-    data = {
-        "fever": int(fever),
-        "cough": int(cough),
-        "headache": int(headache),
-        "fatigue": int(fatigue),
-        "vomiting": int(vomiting)
+    features = np.array([[int(fever),int(cough),int(headache),int(fatigue),int(vomiting)]])
+
+    prediction = model.predict(features)[0]
+
+    first_aid = {
+        "Flu":"Drink fluids and rest.",
+        "Cold":"Stay warm and hydrate.",
+        "Dengue":"Drink plenty of fluids and consult doctor.",
+        "Malaria":"Seek medical attention quickly.",
+        "Migraine":"Rest in a quiet dark room."
     }
 
-    res = requests.post("http://127.0.0.1:5000/predict", json=data)
-    result = res.json()
-
-    st.success("Disease: " + result["disease"])
-    st.info("First Aid: " + result["first_aid"])
+    st.success("Disease: " + prediction)
+    st.info("First Aid: " + first_aid.get(prediction,"Consult doctor"))
